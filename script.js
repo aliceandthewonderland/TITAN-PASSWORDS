@@ -87,6 +87,11 @@ function generatePasswords() {
         
         const passwordText = document.createElement('div');
         passwordText.className = 'password-text';
+        
+        if (passData.length > 100) {
+            passwordText.style.maxHeight = '100px';
+        }
+        
         passwordText.textContent = passData.password;
         
         const infoContainer = document.createElement('div');
@@ -196,6 +201,33 @@ styles.textContent = `
         background-color: #0056b3;
     }
 
+    .password-item {
+        background: rgba(0, 0, 0, 0.2);
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        position: relative;
+    }
+
+    .password-text {
+        word-wrap: break-word;
+        font-family: monospace;
+        max-height: 150px;
+        overflow-y: auto;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+
+    .info-container {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+    }
+
     .copy-notification {
         position: fixed;
         top: 20px;
@@ -222,6 +254,25 @@ styles.textContent = `
             transform: translateX(0);
             opacity: 1;
         }
+    }
+
+    /* 스크롤바 스타일링 */
+    .password-text::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .password-text::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+    }
+
+    .password-text::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 4px;
+    }
+
+    .password-text::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.4);
     }
 `;
 document.head.appendChild(styles);
